@@ -1,0 +1,21 @@
+version: '3'
+
+services:
+  mysql:
+    image: mysql:8.0
+    ports:
+      - '3306:3306'
+    command: mysqld --default-authentication-plugin=mysql_native_password
+    volumes:
+      - .data/mysql:/var/lib/mysql
+    environment:
+      - MYSQL_ROOT_PASSWORD=root
+      - MYSQL_DATABASE=chat_app
+      - MYSQL_USER=hieujoyce
+      - MYSQL_PASSWORD=123456
+    networks:
+      - app-network
+
+networks:
+  app-network:
+    driver: bridge

@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script src="https://cdn.socket.io/4.5.4/socket.io.min.js"></script>
+  </head>
+  <body>
+    <button id="HJ">Hello</button>
+    <script>
+      var io = io('http://localhost:3000');
+
+      io.on('server', (data) => {
+        console.log(data);
+      });
+      document.querySelector('#HJ').addEventListener('click', async () => {
+        console.log('Test api');
+        const response = await fetch('http://localhost:3000/api/users');
+        const movies = await response.json();
+        console.log(movies);
+        //io.emit('events', { msg: 'HJ' });
+      });
+    </script>
+  </body>
+</html>

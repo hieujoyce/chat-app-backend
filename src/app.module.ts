@@ -4,6 +4,8 @@ import { ConfigModule } from '@nestjs/config';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import entities from './utils/typeorm/index';
 import { PassportModule } from '@nestjs/passport';
+import { GatewayModule } from './gateway/gateway.module';
+import { EventEmitterModule } from '@nestjs/event-emitter';
 
 @Module({
   imports: [
@@ -20,6 +22,8 @@ import { PassportModule } from '@nestjs/passport';
       entities,
       synchronize: true,
     }),
+    EventEmitterModule.forRoot(),
+    GatewayModule,
   ],
   controllers: [],
   providers: [],
